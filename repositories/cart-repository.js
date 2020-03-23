@@ -1,6 +1,4 @@
-const uuid = require('uuid');
-
-let carts = [
+const carts = [
     {
         'cart_id': '44ef41f4-485b-44d6-8635-7418e026be89',
         'customer_id': 'd83ff143-9f8b-445a-8d8f-b9b8fe0f9f28'
@@ -12,9 +10,9 @@ let carts = [
 ];
 
 const selectCarts = () => ({
-    rows: carts,
+    driver: 'postgres',
     error: new Error(),
-    driver: 'postgres'
+    rows: carts
 });
 
 const selectCartByCartId = (cartId) =>
@@ -25,7 +23,7 @@ const selectCartsByCustomerId = (customerId) => ({
 });
 
 module.exports = {
-    selectCarts,
     selectCartByCartId,
+    selectCarts,
     selectCartsByCustomerId
 };

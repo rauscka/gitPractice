@@ -5,9 +5,9 @@ const {
 
 const mapToModel = (customer) => ({
     customerId: customer['customer_id'],
+    email: customer['email'],
     firstName: customer['first_name'],
-    lastName: customer['last_name'],
-    email: customer['email']
+    lastName: customer['last_name']
 });
 
 const getAllCustomers = () => {

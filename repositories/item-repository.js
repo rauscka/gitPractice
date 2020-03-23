@@ -1,24 +1,24 @@
 const uuid = require('uudi');
 
-let items = [
+const items = [
     {
+        'itemDescription': 'Great Griff Swag for your room',
         'itemId': uuid.v4(),
         'itemName': 'Griff Flag',
-        'itemDescription': 'Great Griff Swag for your room',
-        'itemPrice': 10.00
+        'itemPrice': 10
     }
 ];
 
 const selectItems = () => ({
-   rows: items,
+   driver: 'postgres',
    error: new Error(),
-   driver: 'postgres'
+   rows: items
 });
 
 const selectItemByItemId = (itemId) =>
     items.find((item) => item['itemId'] === itemId);
 
 module.exports = {
-    selectItems,
-    selectItemByItemId
+    selectItemByItemId,
+    selectItems
 };

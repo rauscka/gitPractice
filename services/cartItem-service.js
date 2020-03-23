@@ -1,12 +1,12 @@
-const{
+const {
     selectCartItems,
     selectCartItemByCartItemId,
     selectCartItemByCartId
 } = require('../repositories/cartItem-repository');
 
 const mapToModel = (cartItem) => ({
-    cartItemId: cartItem['cartItem_Id'],
     cartId: cartItem['cart_Id'],
+    cartItemId: cartItem['cartItem_Id'],
     quantity: cartItem['quantity']
 });
 
