@@ -1,13 +1,10 @@
-const uuid = require('uuid');
-
 const {
     getAllCustomers,
     getCustomerByCustomerId
 } = require('../../services/customer-service');
-
 const {
-    selectCustomers,
-    selectCustomerByCustomerId
+    selectCustomerByCustomerId,
+    selectCustomers
 } = require('../../repositories/customer-repository');
 
 jest.mock('../../repositories/customer-repository');
@@ -21,32 +18,32 @@ describe('getAllCustomers', () => {
 
     beforeEach(() => {
         expectedCustomerId = 'd83ff143-9f8b-445a-8d8f-b9b8fe0f9f28';
-        expectedCustomerFirstName = "Karl";
-        expectedCustomerLastName = "Rauschenberger";
-        expectedCustomerEmail = "karl.rauschenberger@drake.edu";
+        expectedCustomerFirstName = 'Karl';
+        expectedCustomerLastName = 'Rauschenberger';
+        expectedCustomerEmail = 'karl.rauschenberger@drake.edu';
 
         expectedCustomer = {
             customerId: expectedCustomerId,
+            email: expectedCustomerEmail,
             firstName: expectedCustomerFirstName,
-            lastName: expectedCustomerLastName,
-            email: expectedCustomerEmail
+            lastName: expectedCustomerLastName
         };
 
         selectCustomers.mockReturnValue({
             rows: [{
                 'customer_id': expectedCustomerId,
+                'email': expectedCustomerEmail,
                 'first_name': expectedCustomerFirstName,
-                'last_name': expectedCustomerLastName,
-                'email': expectedCustomerEmail
+                'last_name': expectedCustomerLastName
             }]
         });
 
         selectCustomerByCustomerId.mockReturnValue({
             rows: [{
                 'customer_id': expectedCustomerId,
+                'email': expectedCustomerEmail,
                 'first_name': expectedCustomerFirstName,
-                'last_name': expectedCustomerLastName,
-                'email': expectedCustomerEmail
+                'last_name': expectedCustomerLastName
             }]
         });
     });

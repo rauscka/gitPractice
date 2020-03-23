@@ -5,18 +5,14 @@ const {
 
 const getItemsRoute = (server) => {
     server.route({
-        path: '/items',
+        handler: () => getAllItems(),
         method: 'GET',
-        handler: (request, h) => {
-            return getAllItems();
-        }
+        path: '/items'
     });
 };
 
 const getItemByItemIdRoute = (server) => {
     server.route({
-        path: '/items/{itemId}',
-        method: 'GET',
         handler: (request, h) => {
             const item = getItemByItemId(request.params.itemId);
 
@@ -25,7 +21,9 @@ const getItemByItemIdRoute = (server) => {
             }
 
             return item;
-        }
+        },
+        method: 'GET',
+        path: '/items/{itemId}'
     });
 };
 

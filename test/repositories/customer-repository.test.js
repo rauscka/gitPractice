@@ -1,8 +1,6 @@
-const uuid = require('uuid');
-
 const {
-    selectCustomers,
-    selectCustomerByCustomerId
+    selectCustomerByCustomerId,
+    selectCustomers
 } = require('../../repositories/customer-repository');
 
 describe('customer repository', () => {
@@ -14,15 +12,15 @@ describe('customer repository', () => {
 
     beforeEach(() => {
         expectedCustomerId = 'd83ff143-9f8b-445a-8d8f-b9b8fe0f9f28';
-        expectedCustomerFirstName = 'karl';
+        expectedCustomerFirstName = 'Karl';
         expectedCustomerLastName = 'Rauschenberger';
         expectedCustomerEmail = 'karl.rauschenberger@drake.edu';
 
          expectedCustomer = {
             'customer_id': expectedCustomerId,
-            'first_name': expectedCustomerFirstName,
-            'last_name': expectedCustomerLastName,
-            'email': expectedCustomerEmail
+             'email': expectedCustomerEmail,
+             'first_name': expectedCustomerFirstName,
+             'last_name': expectedCustomerLastName
         };
     });
 
@@ -32,7 +30,6 @@ describe('customer repository', () => {
             const [actualCustomer] = actualCustomers.rows;
 
             expect(actualCustomer).toEqual(expectedCustomer);
-
         });
     });
 
@@ -42,11 +39,10 @@ describe('customer repository', () => {
 
             expect(actualCustomer).toEqual({
                 'customer_id': expectedCustomerId,
+                'email': 'karl.rauschenberger@drake.edu',
                 'first_name': 'Karl',
-                'last_name': 'Rauschenberger',
-                'email': 'karl.rauschenberger@drake.edu'
+                'last_name': 'Rauschenberger'
             });
-
         });
     });
 });

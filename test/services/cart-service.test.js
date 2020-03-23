@@ -6,8 +6,8 @@ const {
     getCartsByCustomerId
 } = require('../../services/cart-service');
 const {
-    selectCarts,
     selectCartByCartId,
+    selectCarts,
     selectCartsByCustomerId
 } = require('../../repositories/cart-repository');
 
@@ -16,8 +16,7 @@ jest.mock('../../repositories/cart-repository');
 describe('getAllCarts', () => {
     let expectedFirstCart,
         expectedFirstCartId,
-        expectedCustomerId,
-        expectedSecondCart;
+        expectedCustomerId;
 
     beforeEach(() => {
         expectedFirstCartId = uuid.v4();

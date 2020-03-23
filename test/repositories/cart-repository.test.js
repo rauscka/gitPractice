@@ -1,8 +1,8 @@
 const uuid = require('uuid');
 
 const {
-    selectCarts,
     selectCartByCartId,
+    selectCarts,
     selectCartsByCustomerId
 } = require('../../repositories/cart-repository');
 
@@ -35,7 +35,6 @@ describe('cart repository', () => {
 
             expect(actualFirstCart).toEqual(expectedFirstCart);
             expect(actualSecondCart).toEqual(expectedSecondCart);
-
         });
     });
 

@@ -4,9 +4,9 @@ const {
 } = require('../repositories/item-repository');
 
 const mapToModel = (item) => ({
+    description: item['itemDescription'],
     itemId: item['itemId'],
     name: item['itemName'],
-    description: item['itemDescription'],
     price: item['itemPrice']
 });
 

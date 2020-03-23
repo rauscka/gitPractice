@@ -6,34 +6,30 @@ const {
 
 const getCartItemsRoute = (server) => {
     server.route({
-        path: '/cartItems',
+        handler: () => getAllCartItems(),
         method: 'GET',
-        handler: (request, h) => {
-
-            return getAllCartItems();
-        }
+        path: '/cartItems'
     });
 };
 
 const getCartItemsByItemIdRoute = (server) => {
     server.route({
-        path: '/cartItems/{cartItemId}',
-        method: 'GET',
         handler: (request, h) => {
             const cartItems = getCartItemsByItemId(request.params.cartItemId);
-            if(!cartItems) {
+
+            if (!cartItems) {
                 return h.response().code(404);
             }
 
             return cartItems();
-        }
+        },
+        method: 'GET',
+        path: '/cartItems/{cartItemId}'
     });
 };
 
 const getCartItemsByCartItemIdRoute = (server) => {
     server.route({
-        path: '/cartItems/{cartItemId}',
-        method: 'GET',
         handler: (request, h) => {
             const cartItemId = getCartItemsByCartItemId(request.params.cartItemId);
 
@@ -42,7 +38,9 @@ const getCartItemsByCartItemIdRoute = (server) => {
             }
 
             return cartItemId;
-        }
+        },
+        method: 'GET',
+        path: '/cartItems/{cartItemId}'
     });
 };
 

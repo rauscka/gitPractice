@@ -1,17 +1,17 @@
 const uuid = require('uuid');
 
-let cartItems = [
+const cartItems = [
     {
-        'cartItem_Id': uuid.v4(),
         'cart_Id': uuid.v4(),
+        'cartItem_Id': uuid.v4(),
         'quantity': 4
     }
 ];
 
- const selectCartItems  = () => ({
-     rows: cartItems,
+ const selectCartItems = () => ({
+     driver: 'postgres',
      error: new Error(),
-     driver: 'postgres'
+     rows: cartItems
  });
 
  const selectCartItemByCartItemId = (cartItemId) =>
@@ -21,7 +21,7 @@ let cartItems = [
      cartItems.find((cartItem) => cartItem['cart_Id'] === cartId);
 
  module.exports = {
-   selectCartItems,
    selectCartItemByCartId,
-   selectCartItemByCartItemId
+   selectCartItemByCartItemId,
+   selectCartItems
  };
